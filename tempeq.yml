@@ -1,0 +1,15 @@
+---
+- hosts: WebServer
+  become: yes
+  vars:
+   description: "{{ ansible_hostname }}"
+  tasks:
+   - name: Change index.html file
+     template: src=template.j2 dest=/var/www/html/index.html
+     notify:    
+      - restart httpd
+   - name: ensure apache is running
+     service: name=httpd state=running
+  handlers:
+   - name: restart httpd
+     service: name=httpd state=restarted

@@ -1,0 +1,21 @@
+---
+ - hosts: WebServer
+   become: yes
+   tasks:
+    - name: Install apache
+      yum: 
+        name: httpd  
+        state: latest
+    - name:
+      service:  
+        name: httpd
+        state: started
+    - name: create file if not exist
+      file:
+        state: touch
+        path: /var/www/index.html
+    - name: add a line
+      lineinfile:
+        state: present
+        path: /var/www/index.html 
+        line: Hostname = {{ ansible_hostname }}
