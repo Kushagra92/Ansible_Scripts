@@ -1,0 +1,11 @@
+---
+ - hosts: worker2
+   become: true
+   tasks:
+     - name: using regex with lineinfile
+       lineinfile:
+         path: /opt/testing
+         regexp: '^Hostname'
+         insertafter: '^#Hostname'
+         line: Testing regex
+ 

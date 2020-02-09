@@ -1,0 +1,17 @@
+---
+ - hosts: worker1
+   become: true
+   tasks:
+     - name: Installing httpd
+       yum:
+         name: httpd
+         state: latest
+     - name: starting httpd
+       service:
+         name: httpd
+         state: started
+     - name: copy a file from master to slave & assign permissions
+       copy:
+         src: /var/www/html/index.html
+         dest: /var/www/html/
+                

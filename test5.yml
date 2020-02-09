@@ -1,0 +1,6 @@
+---
+ - hosts: web
+   become: true
+   tasks:
+     - name: debug file
+       debug: msg="This is checking message"

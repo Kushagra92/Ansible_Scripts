@@ -1,0 +1,9 @@
+---
+ - hosts: web
+   become: true
+   tasks:
+     - shell: cat /etc/motd
+       register: motd_contents
+     - debug: msg="stdout{{ motd_contents }}"
+	   
+ 
