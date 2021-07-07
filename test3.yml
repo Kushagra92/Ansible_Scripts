@@ -1,0 +1,11 @@
+---
+ - hosts: worker1
+   become: true
+   tasks:
+     - name: creating a file
+       file:
+         state: touch
+         path: /opt/testing
+         
+     - name: writing to the file
+       shell: echo "Hostname" >> /opt/testing	

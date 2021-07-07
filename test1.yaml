@@ -1,0 +1,12 @@
+---
+ - hosts: worker2
+   become: true
+   tasks:
+     - name: Installing httpd
+       yum:
+         name: httpd
+         state: latest
+     - name: starting httpd
+       service:
+         name: httpd
+         state: started         
